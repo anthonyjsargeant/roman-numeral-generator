@@ -28,7 +28,7 @@ public class RomanNumeralsApplication implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... strings) throws Exception {
+    public void run(String... strings) {
         try {
             if (strings.length == 1) {
                 int number = Integer.parseInt(strings[0]);
