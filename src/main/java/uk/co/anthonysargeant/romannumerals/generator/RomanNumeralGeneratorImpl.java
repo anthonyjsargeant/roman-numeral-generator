@@ -1,17 +1,10 @@
 package uk.co.anthonysargeant.romannumerals.generator;
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
+import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeral.*;
 
 public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
     static int MAX_VALUE = 3999;
-
-    private static final String ONE = "I";
-    private static final String FIVE = "V";
-    private static final String TEN = "X";
-    private static final String FIFTY = "L";
-    private static final String HUNDRED = "C";
-    private static final String FIVE_HUNDRED = "D";
-    private static final String THOUSAND = "M";
 
     @Override
     public String generate(int number) {
@@ -23,10 +16,10 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
         int hundreds = (number / 100) % 10;
         int tens = (number / 10) % 10;
         int units = number % 10;
-        return repeat(thousands, THOUSAND)
-                + repeat(hundreds, HUNDRED, FIVE_HUNDRED, THOUSAND)
-                + repeat(tens, TEN, FIFTY, HUNDRED)
-                + repeat(units, ONE, FIVE, TEN);
+        return repeat(thousands, THOUSAND.numeral())
+                + repeat(hundreds, HUNDRED.numeral(), FIVE_HUNDRED.numeral(), THOUSAND.numeral())
+                + repeat(tens, TEN.numeral(), FIFTY.numeral(), HUNDRED.numeral())
+                + repeat(units, ONE.numeral(), FIVE.numeral(), TEN.numeral());
     }
 
     private String repeat(int number, String numeral) {

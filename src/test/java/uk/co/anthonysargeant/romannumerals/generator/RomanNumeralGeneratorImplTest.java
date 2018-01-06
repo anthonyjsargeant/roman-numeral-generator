@@ -7,6 +7,9 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
+import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeral.FIVE;
+import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeral.ONE;
+import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeral.TEN;
 import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeralGeneratorImpl.MAX_VALUE;
 
 public class RomanNumeralGeneratorImplTest {
@@ -30,7 +33,7 @@ public class RomanNumeralGeneratorImplTest {
 
     @Test
     public void shouldConvertTheIntegerOne() {
-        assertRomanNumeralConversionIsCorrect(1, "I");
+        assertRomanNumeralConversionIsCorrect(1, ONE.numeral());
     }
 
     @Test
@@ -50,7 +53,7 @@ public class RomanNumeralGeneratorImplTest {
 
     @Test
     public void shouldConvertTheIntegerFive() {
-        assertRomanNumeralConversionIsCorrect(5, "V");
+        assertRomanNumeralConversionIsCorrect(5, FIVE.numeral());
     }
 
     @Test
@@ -75,7 +78,7 @@ public class RomanNumeralGeneratorImplTest {
 
     @Test
     public void shouldConvertTheIntegerTen() {
-        assertRomanNumeralConversionIsCorrect(10, "X");
+        assertRomanNumeralConversionIsCorrect(10, TEN.numeral());
     }
 
     @Test
