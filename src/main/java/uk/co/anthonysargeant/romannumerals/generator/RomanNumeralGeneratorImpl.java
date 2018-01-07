@@ -4,13 +4,12 @@ import static org.apache.commons.lang3.StringUtils.EMPTY;
 import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeral.*;
 
 public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
+    static int MIN_VALUE = 1;
     static int MAX_VALUE = 3999;
 
     @Override
     public String generate(int number) {
-        if (number > MAX_VALUE) {
-            throw new IllegalArgumentException("Numbers over 3999 are not supported.");
-        }
+        checkInputIsSupported(number);
 
         int thousands =  number / 1000;
         int hundreds = (number / 100) % 10;
@@ -20,6 +19,14 @@ public class RomanNumeralGeneratorImpl implements RomanNumeralGenerator {
                 + repeat(hundreds, HUNDRED.numeral(), FIVE_HUNDRED.numeral(), THOUSAND.numeral())
                 + repeat(tens, TEN.numeral(), FIFTY.numeral(), HUNDRED.numeral())
                 + repeat(units, ONE.numeral(), FIVE.numeral(), TEN.numeral());
+    }
+
+    private void checkInputIsSupported(int number) {
+        if (number < MIN_VALUE) {
+            throw new IllegalArgumentException("Numbers less than 1 are not supported.");
+        } else if (number > MAX_VALUE) {
+            throw new IllegalArgumentException("Numbers over 3999 are not supported.");
+        }
     }
 
     private String repeat(int number, String numeral) {

@@ -11,6 +11,7 @@ import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeral.FIVE;
 import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeral.ONE;
 import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeral.TEN;
 import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeralGeneratorImpl.MAX_VALUE;
+import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeralGeneratorImpl.MIN_VALUE;
 
 public class RomanNumeralGeneratorImplTest {
 
@@ -26,9 +27,9 @@ public class RomanNumeralGeneratorImplTest {
         romanNumeralGenerator.generate(MAX_VALUE + 1);
     }
 
-    @Test
-    public void shouldReturnEmptyStringIfInputIsZero() {
-        assertRomanNumeralConversionIsCorrect(0, EMPTY);
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionIfInputIsLessThanOne() {
+        romanNumeralGenerator.generate(MIN_VALUE - 1);
     }
 
     @Test
