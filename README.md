@@ -1,4 +1,6 @@
 # Roman Numeral Generator
+[![DepShield Badge](https://depshield.sonatype.org/badges/anthonyjsargeant/roman-numeral-generator/depshield.svg)](https://depshield.github.io)
+
 This is a simple Spring Boot command line application that will return you a Roman Numeral for a given integer input.
 
 **NB:** Only single integers between 1 and 3999 (inclusive) are supported. Any other input will result in an error message. See examples below.
