@@ -5,6 +5,10 @@ This is a simple Spring Boot command line application that will return you a Rom
 
 **NB:** Only single integers between 1 and 3999 (inclusive) are supported. Any other input will result in an error message. See examples below.
 
+## Requirements
+- Java 21
+- Maven 3.9+ (or use the included `./mvnw` wrapper)
+
 ## Building the app
 To build the app, simply run the following command at the terminal:
 
