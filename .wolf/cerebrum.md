@@ -12,6 +12,8 @@
 
 - **Project:** roman-numeral-generator
 - **Description:** [![DepShield Badge](https://depshield.sonatype.org/badges/anthonyjsargeant/roman-numeral-generator/depshield.svg)](https://depshield.github.io)
+- **Java 21 migration completed (2026-05-20):** Spring Boot 1.5→3.2.5, Cucumber 2.3→7.15 (lambda steps rewritten as @Given/@When/@Then), JUnit 4→5, Mockito runners updated. Cucumber integration tests run under `-P integration-test` profile via `mvn verify`, not `mvn test`.
+- **XML comment gotcha:** XML comments must not contain `--` (double dash) — the sequence `--release` inside a comment causes a parse error. Use "release-flag" or similar wording instead.
 
 ## Do-Not-Repeat
 

@@ -1,12 +1,13 @@
 package uk.co.anthonysargeant.romannumerals.generator;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach; // replaces org.junit.Before (JUnit 4 removed in Boot 3)
+import org.junit.jupiter.api.Test; // replaces org.junit.Test
 
 import static org.apache.commons.lang3.StringUtils.EMPTY;
+import static org.hamcrest.MatcherAssert.assertThat; // replaces org.junit.Assert.assertThat (absent in JUnit 5)
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsEqual.equalTo;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows; // replaces @Test(expected=...) which was removed in JUnit 5
 import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeral.FIVE;
 import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeral.ONE;
 import static uk.co.anthonysargeant.romannumerals.generator.RomanNumeral.TEN;
@@ -17,19 +18,21 @@ public class RomanNumeralGeneratorImplTest {
 
     private RomanNumeralGenerator romanNumeralGenerator;
 
-    @Before
+    @BeforeEach // replaces @Before
     public void setUp() {
         romanNumeralGenerator = new RomanNumeralGeneratorImpl();
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void shouldThrowExceptionIfInputIsGreaterThan3999() {
-        romanNumeralGenerator.generate(MAX_VALUE + 1);
+        // replaces @Test(expected=...) — JUnit 5 removed inline expected exception
+        assertThrows(IllegalArgumentException.class, () -> romanNumeralGenerator.generate(MAX_VALUE + 1));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void shouldThrowExceptionIfInputIsLessThanOne() {
-        romanNumeralGenerator.generate(MIN_VALUE - 1);
+        // replaces @Test(expected=...) — JUnit 5 removed inline expected exception
+        assertThrows(IllegalArgumentException.class, () -> romanNumeralGenerator.generate(MIN_VALUE - 1));
     }
 
     @Test

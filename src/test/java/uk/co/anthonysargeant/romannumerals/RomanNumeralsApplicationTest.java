@@ -1,18 +1,18 @@
 package uk.co.anthonysargeant.romannumerals;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach; // replaces org.junit.Before (JUnit 4 removed in Boot 3)
+import org.junit.jupiter.api.Test; // replaces org.junit.Test
+import org.junit.jupiter.api.extension.ExtendWith; // replaces org.junit.runner.RunWith (JUnit 4)
 import org.mockito.Spy;
-import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension; // replaces MockitoJUnitRunner (removed in Mockito 3)
 
 import uk.co.anthonysargeant.romannumerals.generator.RomanNumeralGeneratorImpl;
 
-import static org.mockito.Matchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyInt; // replaces org.mockito.Matchers (removed in Mockito 3)
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class) // replaces @RunWith(MockitoJUnitRunner.class)
 public class RomanNumeralsApplicationTest {
 
     @Spy
@@ -20,7 +20,7 @@ public class RomanNumeralsApplicationTest {
 
     private RomanNumeralsApplication romanNumeralsApplication;
 
-    @Before
+    @BeforeEach // replaces @Before
     public void setUp() {
         romanNumeralsApplication = new RomanNumeralsApplication(romanNumeralGenerator);
     }
